@@ -1,5 +1,5 @@
-flask>=3.0.0
-redis>=5.0.0
-psycopg2-binary>=2.9.0
-python-dotenv>=1.0.0
-pytest>=8.0.0
+flask
+redis
+psycopg2-binary
+python-dotenv
+pytest
