@@ -4,3 +4,5 @@ psycopg2-binary
 python-dotenv
 pytest
 gunicorn
+opencensus-ext-azure
+opencensus-ext-flask

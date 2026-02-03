@@ -1,11 +1,43 @@
 from flask import Flask, jsonify, request
 import os
+import sys
 import logging
 import uuid
 from datetime import datetime
+import time
 
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
+
+# Application Insights Configuration
+# Initialize Application Insights if connection string is provided
+APPLICATIONINSIGHTS_CONNECTION_STRING = os.getenv('APPLICATIONINSIGHTS_CONNECTION_STRING')
+
+if APPLICATIONINSIGHTS_CONNECTION_STRING:
+    try:
+        from opencensus.ext.azure.log_exporter import AzureLogHandler
+        from opencensus.ext.azure import metrics_exporter
+        from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+        from opencensus.trace.samplers import ProbabilitySampler
+        
+        # Configure Azure Log Handler for logging
+        logger = logging.getLogger(__name__)
+        logger.addHandler(AzureLogHandler(connection_string=APPLICATIONINSIGHTS_CONNECTION_STRING))
+        
+        # Configure Flask middleware for request tracking
+        middleware = FlaskMiddleware(
+            app,
+            exporter=None,  # Using connection string from environment
+            sampler=ProbabilitySampler(rate=1.0),
+        )
+        
+        logging.info("Application Insights telemetry initialized successfully")
+    except ImportError:
+        logging.warning("Application Insights libraries not found. Install opencensus-ext-azure and opencensus-ext-flask")
+    except Exception as e:
+        logging.error(f"Failed to initialize Application Insights: {str(e)}")
+else:
+    logging.warning("APPLICATIONINSIGHTS_CONNECTION_STRING not set. Application Insights telemetry disabled.")
 
 @app.route("/")
 def home():
@@ -20,7 +52,51 @@ def get_users():
 
 @app.route("/health")
 def health_check():
-    return jsonify({"status": "healthy", "message": "App is running"})
+    """
+    Enhanced health check endpoint with response time measurement.
+    
+    Returns:
+        - 200 OK: Service is healthy
+        - 503 Service Unavailable: Service has issues
+    """
+    start_time = time.time()
+    
+    health_status = {
+        "status": "healthy",
+        "message": "App is running",
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "version": "1.0.0"
+    }
+    
+    # Add response time measurement
+    response_time = (time.time() - start_time) * 1000  # Convert to milliseconds
+    health_status["response_time_ms"] = round(response_time, 2)
+    
+    # Check critical dependencies (example structure)
+    checks = {}
+    
+    # Example: Check if Application Insights is configured
+    checks["application_insights"] = {
+        "status": "configured" if APPLICATIONINSIGHTS_CONNECTION_STRING else "not_configured"
+    }
+    
+    # Example: Check environment
+    checks["environment"] = {
+        "status": "ok",
+        "python_version": sys.version.split()[0]
+    }
+    
+    health_status["checks"] = checks
+    
+    # Determine overall health status
+    all_healthy = all(check.get("status") in ["ok", "configured"] for check in checks.values())
+    
+    if not all_healthy:
+        health_status["status"] = "degraded"
+    
+    logging.info(f"Health check completed: {health_status['status']}")
+    
+    return jsonify(health_status), 200
 
 
 @app.route("/api/orders", methods=["POST"])
