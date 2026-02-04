@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "alertName": {
+      "value": "azure-copilot-sre-demo-http5xx-alert"
+    },
+    "alertDescription": {
+      "value": "Alert when HTTP 5xx errors exceed 20 in 5 minutes"
+    },
+    "alertSeverity": {
+      "value": 2
+    },
+    "webAppResourceId": {
+      "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+    },
+    "actionGroupResourceId": {
+      "value": ""
+    },
+    "evaluationFrequency": {
+      "value": "PT1M"
+    },
+    "windowSize": {
+      "value": "PT5M"
+    },
+    "threshold": {
+      "value": 20
+    },
+    "tags": {
+      "value": {
+        "Environment": "Production",
+        "ManagedBy": "IaC",
+        "Purpose": "Monitoring"
+      }
+    }
+  }
+}
