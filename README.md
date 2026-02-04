@@ -41,6 +41,23 @@ The API will be available at `http://localhost:5000`
 | `GET /api/users` | List users |
 | `GET /api/reports` | List reports |
 
+## Infrastructure
+
+The `infrastructure/` directory contains Infrastructure as Code (IaC) for Azure resources:
+
+- **Azure Monitor Alert**: HTTP 5xx error monitoring for the web app
+  - See [infrastructure/README.md](infrastructure/README.md) for deployment instructions
+  - Alert triggers when HTTP 5xx errors exceed 20 in a 5-minute window
+
+### Deploying Azure Monitor Alerts
+
+```bash
+cd infrastructure
+./deploy-alert.sh rg-sre-agent-demo
+```
+
+For more details, see the [infrastructure documentation](infrastructure/README.md).
+
 ## Resources
 
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)

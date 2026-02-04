@@ -21,3 +21,7 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Infrastructure build artifacts
+infrastructure/*.json
+!infrastructure/*.parameters.json
