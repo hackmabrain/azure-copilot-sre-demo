@@ -19,25 +19,25 @@ ACTION_GROUP_ID="${2:-}"
 echo "Deploying Azure Monitor HTTP 5xx alert..."
 echo "Resource Group: $RESOURCE_GROUP"
 
-# Build deployment command
-DEPLOY_CMD="az deployment group create \
-  --resource-group $RESOURCE_GROUP \
-  --template-file alert-http5xx.bicep \
-  --parameters alert-http5xx.parameters.json"
-
-# Add action group if provided
-if [ -n "$ACTION_GROUP_ID" ]; then
-  echo "Action Group: $ACTION_GROUP_ID"
-  DEPLOY_CMD="$DEPLOY_CMD --parameters actionGroupResourceId='$ACTION_GROUP_ID'"
-else
-  echo "Action Group: None (alert will be created without notifications)"
-fi
-
 # Execute deployment
 echo "Executing deployment..."
-eval $DEPLOY_CMD
+if [ -n "$ACTION_GROUP_ID" ]; then
+  echo "Action Group: $ACTION_GROUP_ID"
+  az deployment group create \
+    --resource-group "$RESOURCE_GROUP" \
+    --template-file alert-http5xx.bicep \
+    --parameters alert-http5xx.parameters.json \
+    --parameters actionGroupResourceId="$ACTION_GROUP_ID"
+else
+  echo "Action Group: None (alert will be created without notifications)"
+  az deployment group create \
+    --resource-group "$RESOURCE_GROUP" \
+    --template-file alert-http5xx.bicep \
+    --parameters alert-http5xx.parameters.json
+fi
 
 echo "✓ Alert deployed successfully!"
 echo ""
 echo "To view the alert in Azure Portal:"
 echo "https://portal.azure.com/#view/Microsoft_Azure_Monitoring/AlertsManagementBladeV2"
+
