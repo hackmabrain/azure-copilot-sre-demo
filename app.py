@@ -12,6 +12,10 @@ from opencensus.ext.azure.trace_exporter import AzureExporter
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 from opencensus.trace.samplers import ProbabilitySampler
 
+# Configuration constants
+HEALTH_CHECK_CPU_THRESHOLD = float(os.environ.get('HEALTH_CHECK_CPU_THRESHOLD', '90'))
+HEALTH_CHECK_MEMORY_THRESHOLD = float(os.environ.get('HEALTH_CHECK_MEMORY_THRESHOLD', '90'))
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -65,14 +69,14 @@ def healthz():
         - System metrics (CPU, memory)
     """
     try:
-        # Get system metrics
-        cpu_percent = psutil.cpu_percent(interval=0.1)
+        # Get system metrics (non-blocking CPU check)
+        cpu_percent = psutil.cpu_percent(interval=None)
         memory = psutil.virtual_memory()
         memory_percent = memory.percent
         
         # Determine health status based on resource usage
         status = "healthy"
-        if cpu_percent > 90 or memory_percent > 90:
+        if cpu_percent > HEALTH_CHECK_CPU_THRESHOLD or memory_percent > HEALTH_CHECK_MEMORY_THRESHOLD:
             status = "degraded"
         
         health_data = {
