@@ -1,0 +1,338 @@
+{
+  "properties": {
+    "lenses": [
+      {
+        "order": 0,
+        "parts": [
+          {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                },
+                {
+                  "name": "timeContext",
+                  "value": {
+                    "durationMs": 3600000
+                  }
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "Requests",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Requests"
+                          }
+                        }
+                      ],
+                      "title": "Request Rate",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 6,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "Http5xx",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "HTTP 5xx Errors"
+                          }
+                        }
+                      ],
+                      "title": "HTTP 5xx Errors",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 4,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "HttpResponseTime",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Response Time (P95)"
+                          }
+                        }
+                      ],
+                      "title": "Response Time (P95)",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 6,
+              "y": 4,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Insights/components/appinsights-azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Insights/components/appinsights-azure-copilot-sre-demo"
+                          },
+                          "name": "exceptions/count",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Exceptions"
+                          }
+                        }
+                      ],
+                      "title": "Exception Count",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 0,
+              "y": 8,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "CpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "CPU Percentage"
+                          }
+                        }
+                      ],
+                      "title": "CPU Usage",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 4,
+              "y": 8,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "MemoryPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Memory Percentage"
+                          }
+                        }
+                      ],
+                      "title": "Memory Usage",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "position": {
+              "x": 8,
+              "y": 8,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceId",
+                  "value": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/272c1bdc-9fac-4d46-b472-ac3c51f3b400/resourceGroups/rg-sre-agent-demo/providers/Microsoft.Web/sites/azure-copilot-sre-demo"
+                          },
+                          "name": "Threads",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Thread Count"
+                          }
+                        }
+                      ],
+                      "title": "Thread Count",
+                      "titleKind": 1,
+                      "visualization": {
+                        "chartType": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        }
+      }
+    }
+  },
+  "name": "Azure Copilot SRE Demo - Monitoring Dashboard",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "eastus",
+  "tags": {
+    "hidden-title": "Azure Copilot SRE Demo - Monitoring Dashboard"
+  },
+  "apiVersion": "2020-09-01-preview"
+}
